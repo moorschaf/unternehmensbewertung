@@ -1,9 +1,10 @@
-import streamlit as st
+from __future__ import annotations
 
-st.set_page_config(page_title="DCF Analyzer", layout="wide")
+import runpy
+from pathlib import Path
 
-st.title("DCF Analyzer")
-st.caption("US-Unternehmensbewertung mit SEC-Historie, CAPM-WACC und 5Y+Terminal-Value")
 
-st.write("Diese Deployment-Variante enthaelt nur den DCF-Bereich.")
-st.page_link("pages/02_DCF_Analyzer.py", label="DCF Analyzer oeffnen")
+ROOT = Path(__file__).resolve().parent
+DCF_PAGE = ROOT / "pages" / "02_DCF_Analyzer.py"
+
+runpy.run_path(str(DCF_PAGE), run_name="__main__")
